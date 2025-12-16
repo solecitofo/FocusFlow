@@ -29,22 +29,21 @@ const TaskManagerTDAH = () => {
 
   const loadData = async () => {
     try {
-      const tasksData = await window.storage.get('tdah-tasks');
-      const completedData = await window.storage.get('tdah-completed');
-      
+      const tasksData = await window.storage?.get('tdah-tasks');
+      const completedData = await window.storage?.get('tdah-completed');
       if (tasksData) setTasks(JSON.parse(tasksData.value));
       if (completedData) setCompletedTasks(JSON.parse(completedData.value));
-    } catch (error) {
-      console.log('No hay datos previos');
+    } catch {
+      // No hay datos previos
     }
   };
 
   const saveData = async () => {
     try {
-      await window.storage.set('tdah-tasks', JSON.stringify(tasks));
-      await window.storage.set('tdah-completed', JSON.stringify(completedTasks));
-    } catch (error) {
-      console.error('Error al guardar:', error);
+      await window.storage?.set('tdah-tasks', JSON.stringify(tasks));
+      await window.storage?.set('tdah-completed', JSON.stringify(completedTasks));
+    } catch {
+      // Error al guardar (localStorage no disponible)
     }
   };
 

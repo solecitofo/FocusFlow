@@ -32,6 +32,7 @@
   "build": {
     "appId": "com.tdah.focusflow",
     "productName": "FocusFlow",
+    "asar": false,
     "files": [
       "dist/**/*",
       "electron.js"
