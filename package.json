@@ -1,0 +1,55 @@
+{
+  "type": "module",
+  "name": "FocusFlow",
+  "version": "1.0.0",
+  "description": "Gestor de tareas para personas con TDAH",
+  "main": "electron.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "electron": "electron .",
+    "electron-dev": "NODE_ENV=development electron .",
+    "package": "vite build && electron-builder",
+    "package-win": "vite build && electron-builder --win",
+    "package-mac": "vite build && electron-builder --mac",
+    "package-linux": "vite build && electron-builder --linux"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "lucide-react": "^0.561.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.0",
+    "autoprefixer": "^10.4.23",
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18",
+    "vite": "^5.0.0"
+  },
+  "build": {
+    "appId": "com.tdah.gestor-tareas",
+    "productName": "Gestor Tareas TDAH",
+    "files": [
+      "dist/**/*",
+      "electron.js"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "build/icon.png"
+    }
+  }
+}
