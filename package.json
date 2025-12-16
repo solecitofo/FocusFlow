@@ -30,8 +30,8 @@
     "vite": "^5.0.0"
   },
   "build": {
-    "appId": "com.tdah.gestor-tareas",
-    "productName": "Gestor Tareas TDAH",
+    "appId": "com.tdah.focusflow",
+    "productName": "FocusFlow",
     "files": [
       "dist/**/*",
       "electron.js"
@@ -40,16 +40,15 @@
       "output": "release"
     },
     "win": {
-      "target": "nsis",
-      "icon": "build/icon.ico"
+      "target": [
+        "portable"
+      ]
     },
     "mac": {
-      "target": "dmg",
-      "icon": "build/icon.icns"
+      "target": "dmg"
     },
     "linux": {
-      "target": "AppImage",
-      "icon": "build/icon.png"
+      "target": "AppImage"
     }
   }
 }
