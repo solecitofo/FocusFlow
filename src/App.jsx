@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Clock, Plus, List, Award, ArrowLeft, Edit2, Check, Trash2, Sparkles } from 'lucide-react';
+import logoImg from './assets/logos/focusflow-logo.png';
+import emptyStateImg from './assets/illustrations/empty-state.png';
+import mascotImg from './assets/illustrations/mascot.png';
 
 const TaskManagerTDAH = () => {
   const [currentView, setCurrentView] = useState('home');
@@ -102,9 +105,7 @@ const TaskManagerTDAH = () => {
   const HomeView = () => (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-8">
       <div className="text-center mb-12 space-y-4">
-        <div className="inline-flex items-center justify-center w-20 h-20 bg-white rounded-full shadow-lg mb-4">
-          <Clock className="w-10 h-10 text-purple-600" />
-        </div>
+        <img src={logoImg} alt="FocusFlow" className="w-20 h-20 mx-auto mb-4" />
         <h1 className="text-6xl font-light text-gray-800">{formatTime(currentTime)}</h1>
         <p className="text-xl text-gray-600 capitalize">{formatDate(currentTime)}</p>
       </div>
@@ -286,7 +287,7 @@ const TaskManagerTDAH = () => {
 
         {tasks.length === 0 ? (
           <div className="bg-white rounded-3xl shadow-lg p-12 text-center">
-            <List className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+            <img src={emptyStateImg} alt="Sin tareas" className="w-48 h-auto mx-auto mb-6 rounded-2xl" />
             <p className="text-xl text-gray-500">No tienes tareas pendientes</p>
             <p className="text-gray-400 mt-2">¡Empieza a capturar tus ideas!</p>
           </div>
@@ -442,7 +443,7 @@ const TaskManagerTDAH = () => {
 
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <Award className="w-20 h-20 text-yellow-500 mx-auto mb-4" />
+          <img src={mascotImg} alt="Mascota" className="w-20 h-20 mx-auto mb-4 rounded-full" />
           <h2 className="text-4xl font-bold text-gray-800 mb-4">Tablero de Éxitos</h2>
           <p className="text-2xl text-gray-600">
             {completedTasks.length} {completedTasks.length === 1 ? 'tarea completada' : 'tareas completadas'}
@@ -451,7 +452,7 @@ const TaskManagerTDAH = () => {
 
         {completedTasks.length === 0 ? (
           <div className="bg-white rounded-3xl shadow-lg p-12 text-center">
-            <Sparkles className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+            <img src={mascotImg} alt="Mascota" className="w-24 h-24 mx-auto mb-4 rounded-full" />
             <p className="text-xl text-gray-500">Aún no has completado ninguna tarea</p>
             <p className="text-gray-400 mt-2">¡Completa tu primera tarea y celebra!</p>
           </div>
