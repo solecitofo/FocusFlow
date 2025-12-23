@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { LAYERS, LayerType, IdeaStatus, IdeaType } from '../types';
-import { X, Zap, Clock } from 'lucide-react';
+// Custom icons
+import XIcon from '../assets/iconos/X.png';
+import ZapIcon from '../assets/iconos/Zap.png';
+import ClockIcon from '../assets/iconos/Clock.png';
 
 export function QuickCapture() {
   const { addIdea, toggleQuickCapture, state } = useApp();
@@ -67,7 +70,7 @@ export function QuickCapture() {
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-slate-100">
           <div className="flex items-center gap-2">
-            <Zap className="text-amber-500" size={20} />
+            <img src={ZapIcon} alt="Captura rápida" className="w-5 h-5" />
             <h2 className="text-lg font-semibold text-slate-800">
               Captura Rápida
             </h2>
@@ -76,7 +79,7 @@ export function QuickCapture() {
             onClick={toggleQuickCapture}
             className="p-1 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-600"
           >
-            <X size={20} />
+            <img src={XIcon} alt="Cerrar" className="w-5 h-5" />
           </button>
         </div>
 
@@ -114,7 +117,7 @@ export function QuickCapture() {
                 }
               `}
             >
-              <Zap size={16} />
+              <img src={ZapIcon} alt="Rápida" className="w-4 h-4" />
               Rápida
             </button>
             <button
@@ -129,7 +132,7 @@ export function QuickCapture() {
                 }
               `}
             >
-              <Clock size={16} />
+              <img src={ClockIcon} alt="Todo el día" className="w-4 h-4" />
               Todo el día
             </button>
           </div>

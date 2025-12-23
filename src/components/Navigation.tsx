@@ -1,15 +1,15 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
 import { ViewType, LAYERS, LayerType } from '../types';
-import {
-  Home,
-  Calendar,
-  Layers,
-  Settings,
-  Sun,
-  Moon,
-  Clock,
-} from 'lucide-react';
+
+// Custom icons
+import HomeIcon from '../assets/iconos/Home.png';
+import CalendarIcon from '../assets/iconos/Calendar.png';
+import LayersIcon from '../assets/iconos/Layers.png';
+import SettingsIcon from '../assets/iconos/Settings.png';
+import SunIcon from '../assets/iconos/Sun.png';
+import MoonIcon from '../assets/iconos/Moon.png';
+import ClockIcon from '../assets/iconos/Clock.png';
 
 export function Navigation() {
   const { state, setView, setModoCalma, setCapaActiva } = useApp();
@@ -17,10 +17,10 @@ export function Navigation() {
   const { modoCalma, capaActiva } = settings;
 
   const navItems: { id: ViewType; icon: React.ReactNode; label: string }[] = [
-    { id: 'home', icon: <Home size={20} />, label: 'Inicio' },
-    { id: 'hoy', icon: <Clock size={20} />, label: 'Hoy' },
-    { id: 'calendario', icon: <Calendar size={20} />, label: 'Calendario' },
-    { id: 'espacios', icon: <Layers size={20} />, label: 'Espacios' },
+    { id: 'home', icon: <img src={HomeIcon} alt="Inicio" className="w-5 h-5" />, label: 'Inicio' },
+    { id: 'hoy', icon: <img src={ClockIcon} alt="Hoy" className="w-5 h-5" />, label: 'Hoy' },
+    { id: 'calendario', icon: <img src={CalendarIcon} alt="Calendario" className="w-5 h-5" />, label: 'Calendario' },
+    { id: 'espacios', icon: <img src={LayersIcon} alt="Espacios" className="w-5 h-5" />, label: 'Espacios' },
   ];
 
   return (
@@ -116,7 +116,7 @@ export function Navigation() {
               }`}
               title={modoCalma ? 'Desactivar Modo Calma' : 'Activar Modo Calma'}
             >
-              {modoCalma ? <Moon size={20} /> : <Sun size={20} />}
+              {modoCalma ? <img src={MoonIcon} alt="Modo Calma" className="w-5 h-5" /> : <img src={SunIcon} alt="Modo Normal" className="w-5 h-5" />}
             </button>
 
             {/* Configuración */}
@@ -128,7 +128,7 @@ export function Navigation() {
                   : 'text-slate-500 hover:bg-slate-100'
               }`}
             >
-              <Settings size={20} />
+              <img src={SettingsIcon} alt="Configuración" className="w-5 h-5" />
             </button>
           </div>
         </div>

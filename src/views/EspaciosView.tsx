@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { IdeaCard } from '../components/IdeaCard';
 import { MentalSpace, LAYERS, LayerType } from '../types';
-import {
-  Layers,
-  Clock,
-  Archive,
-  Sparkles,
-  CheckCircle,
-  Folder,
-} from 'lucide-react';
+// Custom icons
+import LayersIcon from '../assets/iconos/Layers.png';
+import ClockIcon from '../assets/iconos/Clock.png';
+import ArchiveIcon from '../assets/iconos/Archive.png';
+import SparklesIcon from '../assets/iconos/Sparkles.png';
+import CheckCircleIcon from '../assets/iconos/CheckCircle.png';
+import FolderIcon from '../assets/iconos/Folder.png';
 
 export function EspaciosView() {
   const {
@@ -39,21 +38,21 @@ export function EspaciosView() {
     {
       id: 'activas',
       label: 'Activas',
-      icon: <Sparkles size={20} />,
+      icon: <img src={SparklesIcon} alt="Activas" className="w-5 h-5" />,
       count: ideasActivas.length,
       color: 'text-violet-600',
     },
     {
       id: 'recientes',
       label: 'Recientes',
-      icon: <Clock size={20} />,
+      icon: <img src={ClockIcon} alt="Recientes" className="w-5 h-5" />,
       count: ideasRecientes.length,
       color: 'text-blue-600',
     },
     {
       id: 'archivadas',
       label: 'Archivadas',
-      icon: <Archive size={20} />,
+      icon: <img src={ArchiveIcon} alt="Archivadas" className="w-5 h-5" />,
       count: ideasArchivadas.length,
       color: 'text-slate-600',
     },
@@ -83,10 +82,7 @@ export function EspaciosView() {
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
-          <Layers
-            className={modoCalma ? 'text-slate-600' : 'text-teal-500'}
-            size={28}
-          />
+          <img src={LayersIcon} alt="Espacios" className="w-7 h-7" />
           Espacios Mentales
         </h1>
         <p className="text-slate-500">
@@ -135,7 +131,7 @@ export function EspaciosView() {
           className="flex items-center gap-2 px-4 py-3 rounded-xl bg-green-50 text-green-700
             hover:bg-green-100 transition-all"
         >
-          <CheckCircle size={20} />
+          <img src={CheckCircleIcon} alt="Completadas" className="w-5 h-5" />
           <span className="font-medium">Completadas</span>
           <span className="px-2 py-0.5 rounded-full text-xs bg-green-100">
             {completadas.length}
@@ -146,7 +142,7 @@ export function EspaciosView() {
       {/* Selector de capas */}
       <div>
         <h2 className="text-sm font-medium text-slate-600 mb-3 flex items-center gap-2">
-          <Folder size={16} />
+          <img src={FolderIcon} alt="Filtrar" className="w-4 h-4" />
           Filtrar por capa
         </h2>
         <div className="flex flex-wrap gap-2">

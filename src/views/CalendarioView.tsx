@@ -9,13 +9,10 @@ import {
   getDayName,
   getMonthName,
 } from '../utils/dateUtils';
-import {
-  ChevronLeft,
-  ChevronRight,
-  Calendar,
-  Grid3X3,
-  List,
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight, Grid3X3, List } from 'lucide-react';
+
+// Custom icons
+import CalendarIcon from '../assets/iconos/Calendar.png';
 
 type ViewMode = 'semana' | 'mes';
 
@@ -156,10 +153,7 @@ export function CalendarioView() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
-            <Calendar
-              className={modoCalma ? 'text-slate-600' : 'text-violet-500'}
-              size={28}
-            />
+            <img src={CalendarIcon} alt="Calendario" className="w-7 h-7" />
             Calendario
           </h1>
           <p className="text-slate-500 capitalize">

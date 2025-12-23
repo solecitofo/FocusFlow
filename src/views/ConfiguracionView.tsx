@@ -1,6 +1,12 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
-import { Settings, Moon, Sun, Eye, EyeOff, Trash2, Download, Upload } from 'lucide-react';
+import { Eye, EyeOff, Download, Upload } from 'lucide-react';
+
+// Custom icons
+import SettingsIcon from '../assets/iconos/Settings.png';
+import MoonIcon from '../assets/iconos/Moon.png';
+import SunIcon from '../assets/iconos/Sun.png';
+import TrashIcon from '../assets/iconos/Trash.png';
 
 export function ConfiguracionView() {
   const { state, setModoCalma, dispatch } = useApp();
@@ -127,10 +133,7 @@ export function ConfiguracionView() {
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
-          <Settings
-            className={modoCalma ? 'text-slate-600' : 'text-slate-500'}
-            size={28}
-          />
+          <img src={SettingsIcon} alt="Configuración" className="w-7 h-7" />
           Configuración
         </h1>
         <p className="text-slate-500">
@@ -143,7 +146,7 @@ export function ConfiguracionView() {
         <h2 className="text-lg font-semibold text-slate-700 mb-4">Apariencia</h2>
         <div className="space-y-3">
           <SettingRow
-            icon={modoCalma ? <Moon size={20} /> : <Sun size={20} />}
+            icon={modoCalma ? <img src={MoonIcon} alt="Moon" className="w-5 h-5" /> : <img src={SunIcon} alt="Sun" className="w-5 h-5" />}
             title="Modo Calma"
             description="Reduce el ruido visual para mayor concentración"
           >
@@ -254,7 +257,7 @@ export function ConfiguracionView() {
         <h2 className="text-lg font-semibold text-red-600 mb-4">Zona de peligro</h2>
         <div className="space-y-3">
           <SettingRow
-            icon={<Trash2 size={20} className="text-orange-500" />}
+            icon={<img src={TrashIcon} alt="Limpiar" className="w-5 h-5" />}
             title="Limpiar completadas"
             description={`Elimina ${completadasCount} ideas completadas`}
           >
@@ -270,7 +273,7 @@ export function ConfiguracionView() {
           </SettingRow>
 
           <SettingRow
-            icon={<Trash2 size={20} className="text-red-500" />}
+            icon={<img src={TrashIcon} alt="Eliminar" className="w-5 h-5" />}
             title="Eliminar todo"
             description="Elimina todas las ideas permanentemente"
           >

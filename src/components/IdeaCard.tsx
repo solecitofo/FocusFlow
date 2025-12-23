@@ -2,14 +2,14 @@ import React from 'react';
 import { useApp } from '../context/AppContext';
 import { Idea, LAYERS, STATUS_CONFIG } from '../types';
 import { getRelativeTimeString } from '../utils/dateUtils';
-import {
-  Check,
-  Archive,
-  Trash2,
-  Zap,
-  Clock,
-  AlertCircle,
-} from 'lucide-react';
+
+// Custom icons
+import CheckIcon from '../assets/iconos/Check.png';
+import ArchiveIcon from '../assets/iconos/Archive.png';
+import TrashIcon from '../assets/iconos/Trash.png';
+import ZapIcon from '../assets/iconos/Zap.png';
+import ClockIcon from '../assets/iconos/Clock.png';
+import AlertCircleIcon from '../assets/iconos/AlertCircle.png';
 
 interface IdeaCardProps {
   idea: Idea;
@@ -79,7 +79,7 @@ export function IdeaCard({
             }
           `}
         >
-          {isCompleted && <Check size={14} />}
+          {isCompleted && <img src={CheckIcon} alt="Completado" className="w-3.5 h-3.5" />}
         </button>
 
         {/* Contenido */}
@@ -96,7 +96,7 @@ export function IdeaCard({
         {/* Indicadores */}
         <div className="flex items-center gap-1.5">
           {idea.isUrgent && (
-            <AlertCircle size={14} className="text-red-500" />
+            <img src={AlertCircleIcon} alt="Urgente" className="w-3.5 h-3.5" />
           )}
           <span className="text-sm">{layer.icon}</span>
           <span className="text-xs">{status.emoji}</span>
@@ -133,7 +133,7 @@ export function IdeaCard({
               }
             `}
           >
-            {isCompleted && <Check size={16} />}
+            {isCompleted && <img src={CheckIcon} alt="Completado" className="w-4 h-4" />}
           </button>
 
           {/* Capa badge */}
@@ -152,7 +152,7 @@ export function IdeaCard({
             ${idea.type === 'rapida' ? 'bg-blue-100 text-blue-600' : 'bg-violet-100 text-violet-600'}
           `}
         >
-          {idea.type === 'rapida' ? <Zap size={12} /> : <Clock size={12} />}
+          {idea.type === 'rapida' ? <img src={ZapIcon} alt="Rápida" className="w-3 h-3" /> : <img src={ClockIcon} alt="Todo el día" className="w-3 h-3" />}
           {idea.type === 'rapida' ? 'Rápida' : 'Todo el día'}
         </div>
       </div>
@@ -195,14 +195,14 @@ export function IdeaCard({
               className="p-1.5 rounded-lg hover:bg-slate-200 text-slate-400 hover:text-slate-600"
               title={idea.isArchived ? 'Desarchivar' : 'Archivar'}
             >
-              <Archive size={16} />
+              <img src={ArchiveIcon} alt="Archivar" className="w-4 h-4" />
             </button>
             <button
               onClick={handleDelete}
               className="p-1.5 rounded-lg hover:bg-red-100 text-slate-400 hover:text-red-600"
               title="Eliminar"
             >
-              <Trash2 size={16} />
+              <img src={TrashIcon} alt="Eliminar" className="w-4 h-4" />
             </button>
           </div>
         )}
@@ -211,7 +211,7 @@ export function IdeaCard({
       {/* Indicador de urgente */}
       {idea.isUrgent && (
         <div className="absolute top-2 right-2">
-          <AlertCircle size={18} className="text-red-500" />
+          <img src={AlertCircleIcon} alt="Urgente" className="w-4.5 h-4.5" />
         </div>
       )}
     </div>
