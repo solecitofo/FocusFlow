@@ -3,7 +3,10 @@ import { useApp } from '../context/AppContext';
 import { IdeaCard } from '../components/IdeaCard';
 import { LAYERS, STATUS_CONFIG, IdeaStatus, LayerType, ENERGY_BLOCKS } from '../types';
 import { formatDate } from '../utils/dateUtils';
-import { Sun, Clock, Battery, BatteryMedium, BatteryLow, Sparkles } from 'lucide-react';
+import { Battery, BatteryMedium, BatteryLow } from 'lucide-react';
+import SunIcon from '../assets/iconos/Sun.png';
+import ClockIcon from '../assets/iconos/Clock.png';
+import SparklesIcon from '../assets/iconos/Sparkles.png';
 
 export function HoyView() {
   const { state, getIdeasHoy, updateIdea } = useApp();
@@ -85,7 +88,7 @@ export function HoyView() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
-            <Sun className="text-amber-500" size={28} />
+            <img src={SunIcon} alt="Hoy" className="w-7 h-7" />
             Hoy
           </h1>
           <p className="text-slate-500 capitalize">{formatDate(new Date())}</p>
@@ -119,7 +122,7 @@ export function HoyView() {
           {ideasTodoElDia.length > 0 && (
             <div>
               <h2 className="text-lg font-semibold text-slate-700 mb-3 flex items-center gap-2">
-                <Sparkles className="text-violet-500" size={20} />
+                <img src={SparklesIcon} alt="Ideas grandes" className="w-5 h-5" />
                 Ideas grandes (todo el día)
               </h2>
               <div className="grid gap-4 md:grid-cols-2">
@@ -134,7 +137,7 @@ export function HoyView() {
           {!modoCalma && (
             <div>
               <h2 className="text-lg font-semibold text-slate-700 mb-3 flex items-center gap-2">
-                <Clock className="text-blue-500" size={20} />
+                <img src={ClockIcon} alt="Bloques de energía" className="w-5 h-5" />
                 Organiza por bloques de energía
               </h2>
               <div className="grid gap-4 md:grid-cols-3">

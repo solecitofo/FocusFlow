@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { formatDate, formatTime } from '../utils/dateUtils';
 import { IdeaCard } from '../components/IdeaCard';
-import { Clock, Calendar, Layers, Zap, TrendingUp, Sparkles } from 'lucide-react';
+import ClockIcon from '../assets/iconos/Clock.png';
+import CalendarIcon from '../assets/iconos/Calendar.png';
+import LayersIcon from '../assets/iconos/Layers.png';
+import ZapIcon from '../assets/iconos/Zap.png';
+import TrendingUpIcon from '../assets/iconos/TrendingUp.png';
+import SparklesIcon from '../assets/iconos/Sparkles.png';
 
 export function HomeView() {
   const { state, setView, getIdeasHoy, getIdeasActivas, toggleQuickCapture } = useApp();
@@ -22,21 +27,21 @@ export function HomeView() {
     {
       label: 'Ideas activas',
       value: ideasActivas.length,
-      icon: <TrendingUp size={20} />,
+      icon: <img src={TrendingUpIcon} alt="Ideas activas" className="w-5 h-5" />,
       color: 'text-blue-600',
       bg: 'bg-blue-50',
     },
     {
       label: 'Para hoy',
       value: ideasHoy.length,
-      icon: <Clock size={20} />,
+      icon: <img src={ClockIcon} alt="Para hoy" className="w-5 h-5" />,
       color: 'text-violet-600',
       bg: 'bg-violet-50',
     },
     {
       label: 'Urgentes',
       value: urgentes.length,
-      icon: <Zap size={20} />,
+      icon: <img src={ZapIcon} alt="Urgentes" className="w-5 h-5" />,
       color: 'text-red-600',
       bg: 'bg-red-50',
     },
@@ -45,25 +50,25 @@ export function HomeView() {
   const quickActions = [
     {
       label: 'Captura rápida',
-      icon: <Zap size={24} />,
+      icon: <img src={ZapIcon} alt="Captura rápida" className="w-6 h-6" />,
       action: toggleQuickCapture,
       gradient: 'from-amber-400 to-orange-500',
     },
     {
       label: 'Ver Hoy',
-      icon: <Clock size={24} />,
+      icon: <img src={ClockIcon} alt="Ver Hoy" className="w-6 h-6" />,
       action: () => setView('hoy'),
       gradient: 'from-blue-400 to-blue-600',
     },
     {
       label: 'Calendario',
-      icon: <Calendar size={24} />,
+      icon: <img src={CalendarIcon} alt="Calendario" className="w-6 h-6" />,
       action: () => setView('calendario'),
       gradient: 'from-violet-400 to-purple-600',
     },
     {
       label: 'Espacios',
-      icon: <Layers size={24} />,
+      icon: <img src={LayersIcon} alt="Espacios" className="w-6 h-6" />,
       action: () => setView('espacios'),
       gradient: 'from-teal-400 to-cyan-600',
     },
@@ -80,7 +85,7 @@ export function HomeView() {
         }`}
       >
         <div className="mb-2">
-          <Sparkles className="inline text-amber-500 mb-2" size={24} />
+          <img src={SparklesIcon} alt="Inspiración" className="inline w-6 h-6 mb-2" />
         </div>
         <h1
           className={`text-5xl font-bold mb-2 ${
@@ -170,27 +175,27 @@ export function HomeView() {
       {/* Empty state */}
       {ideasActivas.length === 0 && (
         <div className="text-center py-12">
-          <div className="text-6xl mb-4">🌱</div>
-          <h3 className="text-xl font-semibold text-slate-700 mb-2">
-            Tu mente está despejada
-          </h3>
-          <p className="text-slate-500 mb-6">
-            Empieza capturando tu primera idea
-          </p>
-          <button
-            onClick={toggleQuickCapture}
-            className={`px-6 py-3 rounded-xl text-white font-medium
-              transition-all hover:scale-105
-              ${
-                modoCalma
-                  ? 'bg-slate-700'
-                  : 'bg-gradient-to-r from-violet-500 to-blue-500'
-              }
-            `}
-          >
-            <Zap className="inline mr-2" size={18} />
-            Capturar idea
-          </button>
+            <div className="text-6xl mb-4">🌱</div>
+            <h3 className="text-xl font-semibold text-slate-700 mb-2">
+              Tu mente está despejada
+            </h3>
+            <p className="text-slate-500 mb-6">
+              Empieza capturando tu primera idea
+            </p>
+            <button
+              onClick={toggleQuickCapture}
+              className={`px-6 py-3 rounded-xl text-white font-medium
+                transition-all hover:scale-105
+                ${
+                  modoCalma
+                    ? 'bg-slate-700'
+                    : 'bg-gradient-to-r from-violet-500 to-blue-500'
+                }
+              `}
+            >
+              <img src={ZapIcon} alt="Capturar idea" className="inline mr-2 w-5 h-5" />
+              Capturar idea
+            </button>
         </div>
       )}
     </div>

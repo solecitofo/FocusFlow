@@ -1,6 +1,9 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
-import { Settings, Moon, Sun, Eye, EyeOff, Trash2, Download, Upload } from 'lucide-react';
+import { Eye, EyeOff, Trash2, Download, Upload } from 'lucide-react';
+import SettingsIcon from '../assets/iconos/Settings.png';
+import MoonIcon from '../assets/iconos/Moon.png';
+import SunIcon from '../assets/iconos/Sun.png';
 
 export function ConfiguracionView() {
   const { state, setModoCalma, dispatch } = useApp();
@@ -127,9 +130,10 @@ export function ConfiguracionView() {
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
-          <Settings
-            className={modoCalma ? 'text-slate-600' : 'text-slate-500'}
-            size={28}
+          <img
+            src={SettingsIcon}
+            alt="Configuración"
+            className={modoCalma ? 'w-7 h-7 filter grayscale' : 'w-7 h-7'}
           />
           Configuración
         </h1>
@@ -143,7 +147,11 @@ export function ConfiguracionView() {
         <h2 className="text-lg font-semibold text-slate-700 mb-4">Apariencia</h2>
         <div className="space-y-3">
           <SettingRow
-            icon={modoCalma ? <Moon size={20} /> : <Sun size={20} />}
+            icon={modoCalma ? (
+              <img src={MoonIcon} alt="Modo Calma" className="w-5 h-5" />
+            ) : (
+              <img src={SunIcon} alt="Modo Normal" className="w-5 h-5" />
+            )}
             title="Modo Calma"
             description="Reduce el ruido visual para mayor concentración"
           >

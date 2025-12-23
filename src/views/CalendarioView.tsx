@@ -12,10 +12,10 @@ import {
 import {
   ChevronLeft,
   ChevronRight,
-  Calendar,
   Grid3X3,
-  List,
 } from 'lucide-react';
+import CalendarIcon from '../assets/iconos/Calendar.png';
+import ListIcon from '../assets/iconos/List.png';
 
 type ViewMode = 'semana' | 'mes';
 
@@ -156,9 +156,10 @@ export function CalendarioView() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
-            <Calendar
-              className={modoCalma ? 'text-slate-600' : 'text-violet-500'}
-              size={28}
+            <img
+              src={CalendarIcon}
+              alt="Calendario"
+              className={modoCalma ? 'w-7 h-7 filter grayscale' : 'w-7 h-7'}
             />
             Calendario
           </h1>
@@ -179,7 +180,7 @@ export function CalendarioView() {
                   : 'text-slate-500 hover:text-slate-700'
               }`}
             >
-              <List size={18} />
+              <img src={ListIcon} alt="Vista lista" className="w-4.5 h-4.5" />
             </button>
             <button
               onClick={() => setViewMode('mes')}

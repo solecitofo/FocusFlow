@@ -11,19 +11,19 @@ import {
 } from '../types';
 import { formatDate, getRelativeTimeString } from '../utils/dateUtils';
 import {
-  ArrowLeft,
-  Check,
-  Archive,
-  Trash2,
-  Edit3,
   Save,
-  X,
-  Zap,
-  Clock,
-  AlertCircle,
-  Calendar,
   Battery,
 } from 'lucide-react';
+import ArrowLeftIcon from '../assets/iconos/ArrowLeft.png';
+import CheckIcon from '../assets/iconos/Check.png';
+import ArchiveIcon from '../assets/iconos/Archive.png';
+import Trash2Icon from '../assets/iconos/Trash2.png';
+import Edit3Icon from '../assets/iconos/Edit3.png';
+import CalendarIcon from '../assets/iconos/Calendar.png';
+import XIcon from '../assets/iconos/X.png';
+import ZapIcon from '../assets/iconos/Zap.png';
+import ClockIcon from '../assets/iconos/Clock.png';
+import AlertCircleIcon from '../assets/iconos/AlertCircle.png';
 
 export function DetalleView() {
   const { state, setView, getSelectedIdea, updateIdea, deleteIdea, archiveIdea, completeIdea } =
@@ -113,7 +113,7 @@ export function DetalleView() {
           onClick={() => setView('home')}
           className="flex items-center gap-2 text-slate-600 hover:text-slate-800"
         >
-          <ArrowLeft size={20} />
+          <img src={ArrowLeftIcon} alt="Volver" className="w-5 h-5" />
           <span>Volver</span>
         </button>
 
@@ -125,21 +125,21 @@ export function DetalleView() {
                 className="p-2 rounded-lg hover:bg-slate-100 text-slate-600"
                 title="Editar"
               >
-                <Edit3 size={20} />
+                <img src={Edit3Icon} alt="Editar" className="w-5 h-5" />
               </button>
               <button
                 onClick={handleArchive}
                 className="p-2 rounded-lg hover:bg-slate-100 text-slate-600"
                 title={idea.isArchived ? 'Desarchivar' : 'Archivar'}
               >
-                <Archive size={20} />
+                <img src={ArchiveIcon} alt="Archivar" className="w-5 h-5" />
               </button>
               <button
                 onClick={handleDelete}
                 className="p-2 rounded-lg hover:bg-red-100 text-red-600"
                 title="Eliminar"
               >
-                <Trash2 size={20} />
+                <img src={Trash2Icon} alt="Eliminar" className="w-5 h-5" />
               </button>
             </>
           ) : (
@@ -156,7 +156,7 @@ export function DetalleView() {
                 onClick={() => setIsEditing(false)}
                 className="p-2 rounded-lg hover:bg-slate-100 text-slate-600"
               >
-                <X size={20} />
+                <img src={XIcon} alt="Cancelar" className="w-5 h-5" />
               </button>
             </>
           )}
@@ -215,7 +215,7 @@ export function DetalleView() {
                   }
                 `}
               >
-                <Zap size={14} /> Rápida
+                <img src={ZapIcon} alt="Rápida" className="w-3.5 h-3.5" /> Rápida
               </button>
               <button
                 onClick={() => setIdeaType('todo_el_dia')}
@@ -227,7 +227,7 @@ export function DetalleView() {
                   }
                 `}
               >
-                <Clock size={14} /> Todo el día
+                <img src={ClockIcon} alt="Todo el día" className="w-3.5 h-3.5" /> Todo el día
               </button>
             </div>
           ) : (
@@ -240,7 +240,11 @@ export function DetalleView() {
                 }
               `}
             >
-              {idea.type === 'rapida' ? <Zap size={14} /> : <Clock size={14} />}
+              {idea.type === 'rapida' ? (
+                <img src={ZapIcon} alt="Rápida" className="w-3.5 h-3.5" />
+              ) : (
+                <img src={ClockIcon} alt="Todo el día" className="w-3.5 h-3.5" />
+              )}
               {idea.type === 'rapida' ? 'Rápida' : 'Todo el día'}
             </span>
           )}
@@ -257,13 +261,13 @@ export function DetalleView() {
                 }
               `}
             >
-              <AlertCircle size={14} />
+              <img src={AlertCircleIcon} alt="Urgente" className="w-3.5 h-3.5" />
               {isUrgent ? 'Urgente' : 'Marcar urgente'}
             </button>
           ) : (
             idea.isUrgent && (
               <span className="flex items-center gap-1 px-2 py-1 bg-red-100 text-red-600 rounded-lg text-sm">
-                <AlertCircle size={14} /> Urgente
+                <img src={AlertCircleIcon} alt="Urgente" className="w-3.5 h-3.5" /> Urgente
               </span>
             )
           )}
@@ -395,7 +399,7 @@ export function DetalleView() {
         {/* Fecha */}
         <div className="mb-4">
           <label className="text-sm font-medium text-slate-600 mb-2 block flex items-center gap-2">
-            <Calendar size={16} />
+            <img src={CalendarIcon} alt="Fecha" className="w-4 h-4" />
             Fecha asignada
           </label>
           {isEditing ? (
@@ -443,7 +447,7 @@ export function DetalleView() {
             }
           `}
         >
-          <Check size={24} />
+          <img src={CheckIcon} alt="Completada" className="w-6 h-6" />
           Marcar como completada
         </button>
       )}
