@@ -9,10 +9,11 @@ import {
   getDayName,
   getMonthName,
 } from '../utils/dateUtils';
-import { ChevronLeft, ChevronRight, Grid3X3, List } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Grid3X3 } from 'lucide-react';
 
 // Custom icons
 import CalendarIcon from '../assets/iconos/Calendar.png';
+import ListIcon from '../assets/iconos/list.png';
 
 type ViewMode = 'semana' | 'mes';
 
@@ -173,7 +174,7 @@ export function CalendarioView() {
                   : 'text-slate-500 hover:text-slate-700'
               }`}
             >
-              <List size={18} />
+              <img src={ListIcon} alt="Semana" className="w-4.5 h-4.5" />
             </button>
             <button
               onClick={() => setViewMode('mes')}
