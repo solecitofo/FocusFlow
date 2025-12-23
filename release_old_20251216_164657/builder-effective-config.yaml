@@ -1,0 +1,17 @@
+directories:
+  output: release
+  buildResources: build
+appId: com.tdah.focusflow
+productName: FocusFlow
+files:
+  - filter:
+      - dist/**/*
+      - electron.js
+win:
+  target:
+    - portable
+mac:
+  target: dmg
+linux:
+  target: AppImage
+electronVersion: 27.3.11

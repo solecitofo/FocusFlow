@@ -1,0 +1,10 @@
+# Archivos a ignorar en carpetas de assets
+# Archivos temporales de diseño
+*.psd
+*.ai
+*.fig
+*.sketch
+.DS_Store
+
+# Node modules (nunca se deberían estar aquí, pero por si acaso)
+node_modules/
