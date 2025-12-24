@@ -3,6 +3,7 @@ import { useApp } from '../context/AppContext';
 import { Idea, LAYERS, STATUS_CONFIG } from '../types';
 import { getRelativeTimeString } from '../utils/dateUtils';
 import {
+  Check,
   Trash2,
 } 
 from 'lucide-react';

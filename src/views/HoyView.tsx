@@ -1,7 +1,7 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
 import { IdeaCard } from '../components/IdeaCard';
-import { LAYERS, STATUS_CONFIG, IdeaStatus, LayerType, ENERGY_BLOCKS } from '../types';
+import { STATUS_CONFIG, ENERGY_BLOCKS } from '../types';
 import { formatDate } from '../utils/dateUtils';
 import { Battery, BatteryMedium, BatteryLow } from 'lucide-react';
 import SunIcon from '../assets/iconos/Sun.png';
@@ -9,7 +9,7 @@ import ClockIcon from '../assets/iconos/Clock.png';
 import SparklesIcon from '../assets/iconos/Sparkles.png';
 
 export function HoyView() {
-  const { state, getIdeasHoy, updateIdea } = useApp();
+  const { state, getIdeasHoy } = useApp();
   const { modoCalma, capaActiva } = state.settings;
 
   const ideasHoy = getIdeasHoy();

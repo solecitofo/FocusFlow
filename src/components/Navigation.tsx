@@ -3,6 +3,7 @@ import { useApp } from '../context/AppContext';
 import { ViewType, LAYERS, LayerType } from '../types';
 
 import HomeIcon from '../assets/iconos/Home.png';
+import Logo from '../assets/logos/logo.png';
 import CalendarIcon from '../assets/iconos/Calendar.png';
 import LayersIcon from '../assets/iconos/Layers.png';
 import ClockIcon from '../assets/iconos/Clock.png';
@@ -35,6 +36,7 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-3">
+            <img src={Logo} alt="Logo" className="w-16 h-16 rounded-full shadow" />
             <div
               className={`text-2xl font-bold bg-clip-text text-transparent ${
                 modoCalma

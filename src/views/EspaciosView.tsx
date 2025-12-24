@@ -8,7 +8,7 @@ import ArchiveIcon from '../assets/iconos/Archive.png';
 import SparklesIcon from '../assets/iconos/Sparkles.png';
 import CheckCircleIcon from '../assets/iconos/CheckCircle.png';
 import FolderIcon from '../assets/iconos/Folder.png';
-import LayersIcon from  '../assets/iconos/Layers.png';
+// ...existing code...
 
 export function EspaciosView() {
   const {
@@ -82,10 +82,7 @@ export function EspaciosView() {
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
-          <Layers
-            className={modoCalma ? 'text-slate-600' : 'text-teal-500'}
-            size={28}
-          />
+          <img src={require('../assets/iconos/Layers.png')} alt="Espacios" className={modoCalma ? 'w-7 h-7 opacity-60' : 'w-7 h-7'} />
           Espacios Mentales
         </h1>
         <p className="text-slate-500">

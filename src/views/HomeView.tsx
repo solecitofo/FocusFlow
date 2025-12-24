@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { formatDate, formatTime } from '../utils/dateUtils';
 import { IdeaCard } from '../components/IdeaCard';
@@ -8,8 +8,8 @@ import LayersIcon from '../assets/iconos/Layers.png';
 import ZapIcon from '../assets/iconos/Zap.png';
 import TrendingUpIcon from '../assets/iconos/TrendingUp.png';
 import SparklesIcon from '../assets/iconos/Sparkles.png';
-
-export function HomeView() {
+ 
+  export function HomeView() {
   const { state, setView, getIdeasHoy, getIdeasActivas, toggleQuickCapture } = useApp();
   const { modoCalma } = state.settings;
   const [currentTime, setCurrentTime] = useState(new Date());

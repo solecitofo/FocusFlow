@@ -1,4 +1,4 @@
-import React from 'react';
+// ...existing code...
 import { AppProvider, useApp } from './context/AppContext';
 import { Layout } from './components/Layout';
 import { HomeView } from './views/HomeView';

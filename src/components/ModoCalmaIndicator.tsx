@@ -1,4 +1,4 @@
-import React from 'react';
+// ...existing code...
 import { Moon } from 'lucide-react';
 
 export function ModoCalmaIndicator() {

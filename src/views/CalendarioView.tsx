@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { IdeaCard } from '../components/IdeaCard';
 import {
@@ -20,7 +20,7 @@ import ListIcon from '../assets/iconos/List.png';
 type ViewMode = 'semana' | 'mes';
 
 export function CalendarioView() {
-  const { state, getIdeasPorFecha, getIdeasActivas } = useApp();
+  const { state, getIdeasPorFecha } = useApp();
   const { modoCalma } = state.settings;
 
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -107,7 +107,7 @@ export function CalendarioView() {
           <div className="mt-1">
             {size === 'normal' ? (
               <div className="space-y-1">
-                {ideas.slice(0, 3).map((idea, i) => (
+                {ideas.slice(0, 3).map((idea) => (
                   <div
                     key={idea.id}
                     className={`text-xs truncate px-1 py-0.5 rounded
