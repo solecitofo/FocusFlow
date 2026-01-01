@@ -159,8 +159,9 @@ Configurado para:
 ISC
 
 ## 👥 Autor
-
+sol&me
 FocusFlow - Aplicación de gestión de tareas para TDAH
+Hecho con amor para mentes inquietas
 
 ---
 
