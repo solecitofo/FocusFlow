@@ -1,0 +1,96 @@
+name: Solicitud de Funcionalidad
+description: Sugiere una nueva funcionalidad o mejora para FocusFlow
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por sugerir mejoras para FocusFlow! Tus ideas nos ayudan a hacer la aplicacion mas util para personas con TDAH.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema o necesidad
+      description: Describe el problema que esta funcionalidad resolveria
+      placeholder: "Me frustra cuando... / Necesito poder..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solucion propuesta
+      description: Describe como te gustaria que funcionara
+      placeholder: "Me gustaria que la app pudiera..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area de la aplicacion
+      description: A que parte de FocusFlow afectaria
+      options:
+        - Vista Hoy
+        - Captura Rapida
+        - Bloques de Energia
+        - Espacios/Capas
+        - Calendario
+        - Agenda
+        - Rutinas
+        - Modo Calma
+        - Configuracion
+        - General/Nueva area
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Prioridad sugerida
+      description: Que tan importante crees que es esta funcionalidad
+      options:
+        - Alta (esencial para el flujo de trabajo)
+        - Media (mejoraria significativamente la experiencia)
+        - Baja (seria bueno tenerlo)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: adhd-benefit
+    attributes:
+      label: Beneficio para TDAH
+      description: Como ayudaria especificamente a personas con TDAH
+      options:
+        - Reduce sobrecarga cognitiva
+        - Mejora la organizacion
+        - Facilita el enfoque
+        - Reduce la procrastinacion
+        - Ayuda con la memoria
+        - Reduce la ansiedad
+        - Otro
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas consideradas
+      description: Otras soluciones que hayas pensado
+      placeholder: "Tambien pense en..."
+
+  - type: textarea
+    id: mockups
+    attributes:
+      label: Mockups o ejemplos
+      description: Si tienes bocetos o ejemplos de otras apps
+      placeholder: Arrastra imagenes o describe la interfaz...
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto adicional
+      description: Cualquier otra informacion relevante

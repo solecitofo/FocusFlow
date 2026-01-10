@@ -1,0 +1,89 @@
+name: Reporte de Bug
+description: Reporta un problema o error en FocusFlow
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por tomarte el tiempo de reportar este bug. Por favor, completa la siguiente informacion para ayudarnos a resolverlo.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descripcion del problema
+      description: Una descripcion clara y concisa del bug
+      placeholder: Describe que esta pasando...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducir
+      description: Pasos para reproducir el comportamiento
+      placeholder: |
+        1. Ir a '...'
+        2. Hacer clic en '...'
+        3. Ver el error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamiento esperado
+      description: Que esperabas que pasara
+      placeholder: Describe lo que esperabas...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severidad
+      description: Que tan grave es el problema
+      options:
+        - Critico (la app no funciona)
+        - Alto (funcionalidad importante afectada)
+        - Medio (funcionalidad menor afectada)
+        - Bajo (problema estetico o menor)
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version de FocusFlow
+      description: En que version ocurre el bug
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Sistema Operativo
+      options:
+        - Windows 11
+        - Windows 10
+        - macOS
+        - Linux
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Capturas de pantalla
+      description: Si aplica, agrega capturas para explicar el problema
+      placeholder: Arrastra imagenes aqui o pega enlaces...
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto adicional
+      description: Cualquier otra informacion relevante
+      placeholder: Agrega cualquier contexto adicional...

@@ -1,0 +1,124 @@
+# Labels para FocusFlow
+# Puedes usar github-label-sync para sincronizar: npx github-label-sync --labels .github/labels.yml solecitofo/FocusFlow
+
+# Tipo
+- name: "bug"
+  color: "d73a4a"
+  description: "Algo no funciona correctamente"
+
+- name: "enhancement"
+  color: "a2eeef"
+  description: "Nueva funcionalidad o mejora"
+
+- name: "documentation"
+  color: "0075ca"
+  description: "Mejoras en documentacion"
+
+- name: "refactor"
+  color: "fef2c0"
+  description: "Mejora de codigo sin cambiar funcionalidad"
+
+# Prioridad
+- name: "priority: critical"
+  color: "b60205"
+  description: "Requiere atencion inmediata"
+
+- name: "priority: high"
+  color: "d93f0b"
+  description: "Alta prioridad"
+
+- name: "priority: medium"
+  color: "fbca04"
+  description: "Prioridad media"
+
+- name: "priority: low"
+  color: "0e8a16"
+  description: "Baja prioridad"
+
+# Estado
+- name: "needs-triage"
+  color: "ededed"
+  description: "Necesita revision inicial"
+
+- name: "in-progress"
+  color: "5319e7"
+  description: "Actualmente en desarrollo"
+
+- name: "blocked"
+  color: "b60205"
+  description: "Bloqueado por otro issue"
+
+- name: "ready-for-review"
+  color: "0e8a16"
+  description: "Listo para revision"
+
+# Area
+- name: "area: vista-hoy"
+  color: "c5def5"
+  description: "Vista Hoy / Dashboard"
+
+- name: "area: captura-rapida"
+  color: "c5def5"
+  description: "Modal de captura rapida"
+
+- name: "area: energia"
+  color: "c5def5"
+  description: "Bloques de energia"
+
+- name: "area: espacios"
+  color: "c5def5"
+  description: "Capas/Espacios mentales"
+
+- name: "area: calendario"
+  color: "c5def5"
+  description: "Vista de calendario"
+
+- name: "area: agenda"
+  color: "c5def5"
+  description: "Agenda de eventos"
+
+- name: "area: rutinas"
+  color: "c5def5"
+  description: "Sistema de rutinas"
+
+- name: "area: modo-calma"
+  color: "c5def5"
+  description: "Modo calma"
+
+- name: "area: configuracion"
+  color: "c5def5"
+  description: "Configuracion de la app"
+
+# Beneficio TDAH
+- name: "tdah: sobrecarga"
+  color: "bfdadc"
+  description: "Reduce sobrecarga cognitiva"
+
+- name: "tdah: enfoque"
+  color: "bfdadc"
+  description: "Mejora el enfoque"
+
+- name: "tdah: organizacion"
+  color: "bfdadc"
+  description: "Ayuda con organizacion"
+
+- name: "tdah: memoria"
+  color: "bfdadc"
+  description: "Ayuda con la memoria"
+
+# Otros
+- name: "good first issue"
+  color: "7057ff"
+  description: "Buen issue para nuevos contribuidores"
+
+- name: "help wanted"
+  color: "008672"
+  description: "Se necesita ayuda extra"
+
+- name: "wontfix"
+  color: "ffffff"
+  description: "No se implementara"
+
+- name: "duplicate"
+  color: "cfd3d7"
+  description: "Issue duplicado"
