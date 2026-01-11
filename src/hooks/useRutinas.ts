@@ -12,10 +12,9 @@ const RUTINAS_HOY_KEY = 'rutinasHoy';
 const LOGROS_RUTINA_KEY = 'logrosRutina';
 const PENSAMIENTOS_BLOQUEANTES_KEY = 'encryptedThoughts';
 
-/**
- * Interface for Rutina Activa
- */
-export interface RutinaActiva {
+// Local simplified interfaces for components that don't need full type complexity
+// These match the actual localStorage data structure used by existing components
+interface RutinaActivaSimple {
   titulo: string;
   creada: string;
   energia: string;
@@ -26,10 +25,7 @@ export interface RutinaActiva {
   }>;
 }
 
-/**
- * Interface for Rutina Hoy
- */
-export interface RutinaHoy {
+interface RutinaHoySimple {
   fecha: string;
   bloqueo: string;
   categoria: string;
@@ -39,10 +35,7 @@ export interface RutinaHoy {
   completada: boolean;
 }
 
-/**
- * Interface for Logro Rutina
- */
-export interface LogroRutina {
+interface LogroRutinaSimple {
   fecha: string;
   mensaje: string;
 }
@@ -51,7 +44,7 @@ export interface LogroRutina {
  * Hook to manage Rutinas Activas
  */
 export function useRutinasActivas() {
-  const [rutinas, setRutinas] = useState<RutinaActiva[]>([]);
+  const [rutinas, setRutinas] = useState<RutinaActivaSimple[]>([]);
   const [loading, setLoading] = useState(true);
 
   const loadRutinas = useCallback(async () => {
@@ -86,7 +79,7 @@ export function useRutinasActivas() {
  * Hook to manage Rutinas Hoy
  */
 export function useRutinasHoy() {
-  const [rutinas, setRutinas] = useState<RutinaHoy[]>([]);
+  const [rutinas, setRutinas] = useState<RutinaHoySimple[]>([]);
   const [loading, setLoading] = useState(true);
 
   const loadRutinas = useCallback(async () => {
@@ -106,7 +99,7 @@ export function useRutinasHoy() {
     }
   }, []);
 
-  const addRutina = useCallback(async (nuevaRutina: RutinaHoy) => {
+  const addRutina = useCallback(async (nuevaRutina: RutinaHoySimple) => {
     try {
       const data = await storage.getItem(RUTINAS_HOY_KEY);
       const rutinasHoy = data ? JSON.parse(data) : [];
@@ -134,7 +127,7 @@ export function useRutinasHoy() {
  * Hook to manage Logros Rutina
  */
 export function useLogrosRutina() {
-  const [logros, setLogros] = useState<LogroRutina[]>([]);
+  const [logros, setLogros] = useState<LogroRutinaSimple[]>([]);
   const [loading, setLoading] = useState(true);
 
   const loadLogros = useCallback(async () => {
@@ -154,7 +147,7 @@ export function useLogrosRutina() {
     }
   }, []);
 
-  const addLogro = useCallback(async (nuevoLogro: LogroRutina) => {
+  const addLogro = useCallback(async (nuevoLogro: LogroRutinaSimple) => {
     try {
       const data = await storage.getItem(LOGROS_RUTINA_KEY);
       const logros = data ? JSON.parse(data) : [];

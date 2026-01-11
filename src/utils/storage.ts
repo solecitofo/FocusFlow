@@ -143,12 +143,14 @@ export async function getAllKeys(): Promise<string[]> {
 }
 
 /**
- * Storage interface for compatibility with existing code
+ * Storage interface for compatibility
+ * Note: The storage object provides an alternative API
+ * Main API (getItem, setItem, etc.) should be used for most cases
  */
 export const storage = {
-  get: async (key: string) => ({ value: await getItem(key) }),
-  set: setItem,
-  remove: removeItem,
+  getItem,
+  setItem,
+  removeItem,
   clear,
   getAllKeys,
 };
