@@ -1,8 +1,10 @@
 // src/components/RoutineBuilder.js (modal → wizard)
 import React, { useState } from 'react';
 import CryptoJS from 'crypto-js';
+import { usePensamientosBloqueantes } from '../hooks/useRutinas';
 
 const RoutineBuilder = ({ onClose }) => {
+  const { savePensamiento } = usePensamientosBloqueantes();
   const [step, setStep] = useState(1);
   const [thought, setThought] = useState('');
   const [energy, setEnergy] = useState('medio');
@@ -17,11 +19,11 @@ const RoutineBuilder = ({ onClose }) => {
     { id: '5', name: 'Estiramientos suaves (8 min)', energy: 'medio', time: 8 },
   ];
 
-  // Encriptar pensamiento
-  const saveEncryptedThought = (text) => {
+  // Encriptar pensamiento usando hook unificado
+  const saveEncryptedThought = async (text) => {
     const passphrase = 'tu-passphrase-segura'; // → hazla dinámica (input usuario)
     const encrypted = CryptoJS.AES.encrypt(JSON.stringify({ text, date: new Date() }), passphrase).toString();
-    localStorage.setItem('encryptedThoughts', encrypted);
+    await savePensamiento(encrypted);
   };
 
   // Paso 1: Pensamiento bloqueante (opciones múltiples)
