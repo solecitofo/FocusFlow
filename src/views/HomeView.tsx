@@ -4,6 +4,7 @@ import { formatDate, formatTime } from '../utils/dateUtils';
 import { IdeaCard } from '../components/IdeaCard';
 import { QuickCapture } from '../components/QuickCapture';
 import { AgendaCapture } from '../components/AgendaCapture';
+import { useRutinasActivas } from '../hooks/useRutinas';
 
 
 // Iconos personalizados (importación estática para Vite/React)
@@ -23,26 +24,13 @@ export function HomeView() {
   const [showAgendaCapture, setShowAgendaCapture] = useState(false);
   const { modoCalma } = state.settings;
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [rutinasActivasCount, setRutinasActivasCount] = useState(0);
+  
+  // Use centralized storage hook instead of direct localStorage
+  const { rutinas: rutinasActivas, loading: loadingRutinas } = useRutinasActivas();
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
-    // Leer rutinas activas de localStorage
-    const getRutinasCount = () => {
-      try {
-        const rutinas = JSON.parse(localStorage.getItem('rutinasActivas') || '[]');
-        setRutinasActivasCount(Array.isArray(rutinas) ? rutinas.length : 0);
-      } catch {
-        setRutinasActivasCount(0);
-      }
-    };
-    getRutinasCount();
-    // Escuchar cambios en localStorage (por si se editan rutinas en otra vista)
-    window.addEventListener('storage', getRutinasCount);
-    return () => {
-      clearInterval(timer);
-      window.removeEventListener('storage', getRutinasCount);
-    };
+    return () => clearInterval(timer);
   }, []);
 
   const ideasHoy = getIdeasHoy();
@@ -52,7 +40,7 @@ export function HomeView() {
   const stats = [
     {
       label: 'Rutinas activas',
-      value: rutinasActivasCount,
+      value: loadingRutinas ? '...' : rutinasActivas.length,
       icon: <img src={iconLayers} alt="Rutinas" width={32} height={32} />, 
       color: 'text-violet-600',
       bg: 'bg-violet-50',
