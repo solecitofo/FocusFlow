@@ -1,11 +1,19 @@
 import React, { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
-import { AppState, AppAction, Idea, ViewType, MentalSpace, LayerType, EventoAgenda } from '../types';
+import { 
+  AppState, AppAction, Idea, ViewType, MentalSpace, LayerType, EventoAgenda,
+  RutinaActiva, RutinaHoy, LogroRutina, PensamientoBloqueante
+} from '../types';
 import { v4 as uuidv4 } from 'uuid';
+import * as storage from '../utils/storage';
 
 // Estado inicial
 const initialState: AppState = {
   ideas: [],
   eventos: [],
+  rutinasActivas: [],
+  rutinasHoy: [],
+  logrosRutina: [],
+  pensamientosBloqueantes: [],
   settings: {
     modoCalma: false,
     espacioActivo: 'hoy',

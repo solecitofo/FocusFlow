@@ -1,3 +1,48 @@
+// === RUTINAS ===
+export interface ModuloRutina {
+  id: string;
+  name: string;
+  time: number; // minutes
+  energy: string;
+}
+
+export interface RutinaActiva {
+  id: string;
+  titulo: string;
+  creada: string; // ISO date
+  energia: string;
+  modulos: ModuloRutina[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface RutinaHoy {
+  id: string;
+  fecha: string; // ISO date
+  bloqueo: string;
+  categoria: string;
+  energia: number;
+  hora: string;
+  modulos: string[];
+  completada: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface LogroRutina {
+  id: string;
+  fecha: string; // ISO date
+  mensaje: string;
+  createdAt: string;
+}
+
+export interface PensamientoBloqueante {
+  id: string;
+  texto: string;
+  fecha: string; // ISO date
+  createdAt: string;
+}
+
 // === RECORDATORIO ===
 export interface RecordatorioConfig {
   tipo: 'notificacion' | 'email' | 'popup';
@@ -122,6 +167,10 @@ export interface UserSettings {
 export interface AppState {
   ideas: Idea[];
   eventos: EventoAgenda[];
+  rutinasActivas: RutinaActiva[];
+  rutinasHoy: RutinaHoy[];
+  logrosRutina: LogroRutina[];
+  pensamientosBloqueantes: PensamientoBloqueante[];
   settings: UserSettings;
   currentView: ViewType;
   selectedIdeaId: string | null;
@@ -140,6 +189,15 @@ export type AppAction =
   | { type: 'UPDATE_EVENTO'; payload: Partial<EventoAgenda> & { id: string } }
   | { type: 'DELETE_EVENTO'; payload: string }
   | { type: 'COMPLETE_EVENTO'; payload: string }
+  | { type: 'ADD_RUTINA_ACTIVA'; payload: Omit<RutinaActiva, 'id' | 'createdAt' | 'updatedAt'> }
+  | { type: 'UPDATE_RUTINA_ACTIVA'; payload: Partial<RutinaActiva> & { id: string } }
+  | { type: 'DELETE_RUTINA_ACTIVA'; payload: string }
+  | { type: 'ADD_RUTINA_HOY'; payload: Omit<RutinaHoy, 'id' | 'createdAt' | 'updatedAt'> }
+  | { type: 'UPDATE_RUTINA_HOY'; payload: Partial<RutinaHoy> & { id: string } }
+  | { type: 'DELETE_RUTINA_HOY'; payload: string }
+  | { type: 'COMPLETE_RUTINA_HOY'; payload: string }
+  | { type: 'ADD_LOGRO_RUTINA'; payload: Omit<LogroRutina, 'id' | 'createdAt'> }
+  | { type: 'ADD_PENSAMIENTO_BLOQUEANTE'; payload: Omit<PensamientoBloqueante, 'id' | 'createdAt'> }
   | { type: 'SET_VIEW'; payload: ViewType }
   | { type: 'SELECT_IDEA'; payload: string | null }
   | { type: 'TOGGLE_QUICK_CAPTURE' }
