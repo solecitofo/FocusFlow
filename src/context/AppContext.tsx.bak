@@ -257,7 +257,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const loadState = async () => {
       try {
-        const savedState = await storage.getItem(STORAGE_KEY);
+        let savedState: string | null = null;
+
+        if (window.storage?.get) {
+          const result = await window.storage.get(STORAGE_KEY);
+          savedState = result.value;
+        } else {
+          savedState = localStorage.getItem(STORAGE_KEY);
+        }
 
         if (savedState) {
           const parsed = JSON.parse(savedState);
@@ -282,7 +289,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
         };
 
         const serialized = JSON.stringify(stateToSave);
-        await storage.setItem(STORAGE_KEY, serialized);
+
+        if (window.storage?.set) {
+          await window.storage.set(STORAGE_KEY, serialized);
+        } else {
+          localStorage.setItem(STORAGE_KEY, serialized);
+        }
       } catch (error) {
         console.error('Error guardando estado:', error);
       }

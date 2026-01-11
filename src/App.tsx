@@ -10,6 +10,7 @@ import { DetalleView } from './views/DetalleView';
 import { ConfiguracionView } from './views/ConfiguracionView';
 import RutinasView from './views/RutinasView';
 import { ModoCalmaView } from './views/ModoCalmaView';
+import ErrorBoundary from './components/ErrorBoundary';
 
 function AppContent() {
   const { state } = useApp();
@@ -50,9 +51,11 @@ function AppContent() {
 
 function App() {
   return (
-    <AppProvider>
-      <AppContent />
-    </AppProvider>
+    <ErrorBoundary>
+      <AppProvider>
+        <AppContent />
+      </AppProvider>
+    </ErrorBoundary>
   );
 }
 

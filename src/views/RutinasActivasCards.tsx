@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRutinasActivas } from '../hooks/useRutinas';
 
 function formatDate(dateStr: string) {
   const d = new Date(dateStr);
@@ -7,8 +8,9 @@ function formatDate(dateStr: string) {
 
 const RutinasActivasCards = ({ onEdit }: { onEdit: () => void }) => {
   const [selected, setSelected] = useState<number|null>(null);
-  const rutinas = JSON.parse(localStorage.getItem('rutinasActivas') || '[]');
+  const { rutinas, loading } = useRutinasActivas();
 
+  if (loading) return <div className="text-center text-gray-500">Cargando rutinas...</div>;
   if (rutinas.length === 0) return null;
 
   return (

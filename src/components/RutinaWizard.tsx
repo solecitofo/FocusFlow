@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { useRutinasHoy, useLogrosRutina } from '../hooks/useRutinas';
+
 const CATEGORIAS = [
   { label: 'Autocuidado', value: 'autocuidado', destacado: true },
   { label: 'Trabajo', value: 'trabajo' },
@@ -23,6 +26,9 @@ const BLOQUEOS: BloqueoOption[] = [
 ];
 
 export default function RoutineBuilder({ onFinish }: { onFinish: () => void }) {
+  const { addRutina: addRutinaHoy } = useRutinasHoy();
+  const { addLogro } = useLogrosRutina();
+  
   const [energia, setEnergia] = useState(2); // 1=bajo, 2=medio, 3=alto
   const [hora, setHora] = useState('08:00');
   const [step, setStep] = useState(0);
@@ -158,8 +164,8 @@ export default function RoutineBuilder({ onFinish }: { onFinish: () => void }) {
             : prev
       );
     };
-    const handleGuardar = () => {
-      // Guardar rutina en localStorage (tracking en "Hoy")
+    const handleGuardar = async () => {
+      // Guardar rutina usando hook unificado
       const hoy = new Date().toISOString().slice(0, 10);
       const nuevaRutina = {
         fecha: hoy,
@@ -170,10 +176,8 @@ export default function RoutineBuilder({ onFinish }: { onFinish: () => void }) {
         modulos: modulosSeleccionados,
         completada: false,
       };
-      // Guardar en localStorage bajo "rutinasHoy"
-      const rutinasHoy = JSON.parse(localStorage.getItem('rutinasHoy') || '[]');
-      rutinasHoy.push(nuevaRutina);
-      localStorage.setItem('rutinasHoy', JSON.stringify(rutinasHoy));
+      
+      await addRutinaHoy(nuevaRutina);
 
       // Notificación diaria (Web Notifications API)
       if ('Notification' in window) {
@@ -237,15 +241,13 @@ export default function RoutineBuilder({ onFinish }: { onFinish: () => void }) {
   ];
   const [showTip, setShowTip] = useState(false);
   const [tip, setTip] = useState('');
-  const handleLogro = () => {
-    // Registrar logro en localStorage
-    const logros = JSON.parse(localStorage.getItem('logrosRutina') || '[]');
+  const handleLogro = async () => {
+    // Registrar logro usando hook unificado
     const nuevoLogro = {
       fecha: new Date().toISOString(),
       mensaje: tip,
     };
-    logros.push(nuevoLogro);
-    localStorage.setItem('logrosRutina', JSON.stringify(logros));
+    await addLogro(nuevoLogro);
     setShowTip(false);
     onFinish();
   };
